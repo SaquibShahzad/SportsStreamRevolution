@@ -2,7 +2,9 @@
 import pika
 import ast
 queue_name = 'puck-tracker'
+teams = {}
 goalies = {}
+players = {}
 gpos= {}
 ppos={}
 connection = pika.BlockingConnection(
@@ -18,13 +20,17 @@ def callback(ch, method, properties, body):
     j = ast.literal_eval(i)
     k = j["EntityRegistration"]
     l = k["Entities"]
-    
+    m = k["Teams"]
     for player in l:
         if player["Position"] == "G":
-            
-            goalies[player.get("EntityId")] = player.get("EntityTeamId")
-    
-    if len(goalies) >= 4:
+            goalies[player.get("EntityId")] = [player.get("EntityTeamId"), player.get("FirstName") + " " + player.get("LastName")]
+        else:
+            players[player.get("EntityId")] = [player.get("EntityTeamId"), player.get("FirstName") + " " + player.get("LastName")]
+    for team in m:
+        
+        temp2 = team["OfficialId"]
+        teams[temp2] = team["FullName"]
+    if len(goalies) >= 4 and len(teams) == 2:
         channel.stop_consuming()
             
     
@@ -49,7 +55,7 @@ def callback2(ch, method, properties, body):
     
     for player in l:
         if player["EntityId"] in goalies and player["OnPlayingSurface"] == True:
-            gpos[player["EntityId"]] = player["Location"]
+            gpos[player["EntityId"]] = [player["Location"], player["EntityId"]]
         
         elif player["EntityId"] == "1":
             
@@ -65,7 +71,7 @@ def callback2(ch, method, properties, body):
                     cpyer[0] = p
 
             for g in gpos:
-                h = gpos[g]
+                h = gpos[g][0]
                 
                 for p in ppos:
                     pyer = ppos[p]
@@ -73,12 +79,14 @@ def callback2(ch, method, properties, body):
                     if abs(pyer["X"] - h["X"]) + abs(pyer["Y"] - h["Y"]) < cpyer2g[1]:
                         cpyer2g[1] = abs(pyer["X"] - h["X"]) + abs(pyer["Y"] - h["Y"])
                         cpyer2g[0] = p
-                        cpyer2g[2] = abs(int(p)- int(g)) < 100
+                        cpyer2g[2] = (int(players[p][0]) == int(goalies[g][0]))
                 
                 if cpyer2g[0] == cpyer[0] and not cpyer2g[2]:
-                    print(ppos[cpyer2g[0]])
-                    print(gpos[g])
-                    print(loc)
+                    
+                    print("Breakaway!")
+                    print("Player " +  players[cpyer2g[0]][1] + " of the " + teams[players[cpyer[0]][0]] +" at location: " + str(ppos[cpyer2g[0]]))
+                    print("Goalie " +  goalies[g][1] + " of the " + teams[goalies[g][0]] +" at location: " + str(gpos[g][0]))
+                    print("Puck's Location: " + str(loc))
                     
             
                 
