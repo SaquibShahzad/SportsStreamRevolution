@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "openvino_server.py",
+            "console": "integratedTerminal",
+            "env": {
+                "PATH": "C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\ngraph\\lib;C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\inference_engine\\external\\tbb\\bin;C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\inference_engine\\bin\\intel64\\Release;C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\inference_engine\\bin\\intel64\\Debug;C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\inference_engine\\external\\hddl\\bin;C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\model_optimizer;C:\\Program Files (x86)\\IntelSWTools\\openvino\\opencv\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64_win\\compiler;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin;C:\\Program Files\\dotnet\\;C:\\Users\\Phillip Richardson\\AppData\\Local\\Programs\\Python\\Python36\\Scripts\\;C:\\Users\\Phillip Richardson\\AppData\\Local\\Programs\\Python\\Python36\\;C:\\Users\\Phillip Richardson\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Phillip Richardson\\AppData\\Roaming\\npm;C:\\Users\\Phillip Richardson\\.dotnet\\tools;C:\\Users\\Phillip Richardson\\AppData\\Local\\Programs\\Microsoft VS Code\\bin",
+                "PYTHONPATH": "C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\open_model_zoo\\tools\\accuracy_checker;C:\\Program Files (x86)\\IntelSWTools\\openvino\\python\\python3.6;C:\\Program Files (x86)\\IntelSWTools\\openvino\\python\\python3;C:\\Program Files (x86)\\IntelSWTools\\openvino\\deployment_tools\\model_optimizer;"
+            }
+        }
+    ]
+}
