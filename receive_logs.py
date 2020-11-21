@@ -76,9 +76,10 @@ def callback2(ch, method, properties, body):
                         cpyer2g[2] = abs(int(p)- int(g)) < 100
                 
                 if cpyer2g[0] == cpyer[0] and not cpyer2g[2]:
-                    print(ppos[cpyer2g[0]])
-                    print(gpos[g])
-                    print(loc)
+                    print("Breakaway!")
+                    print("Player's Position: " + ppos[cpyer2g[0]])
+                    print("Goalie's Position: "+gpos[g])
+                    print("Puck's Location: " + loc)
                     
             
                 
