@@ -16,6 +16,8 @@ def runMetaData():
     with open(filepath) as infile:
         
         for line in infile:
+            if ('[' == line[0] or ']' == line[0]):
+                continue
             print(line)
             strippedLine = line
             
@@ -26,6 +28,7 @@ def runMetaData():
             msg = json.loads(strippedLine)
             packetTime = parseUTC(msg["PacketSendUTC"])
             delta = packetTime - curDt
+
 
             channel.basic_publish(exchange='', routing_key='puck-tracker', body=str(msg))
             print(" [x] Sent %r" % msg["PacketSendUTC"])

@@ -15,7 +15,7 @@ def runMetaData():
     curDt = parseUTC(curTime)
     with open(filepath) as infile:
         for line in infile:
-            print(line)
+            
             if ('[' == line[0] or ']' == line[0]):
                 continue
             strippedLine = line
@@ -28,10 +28,12 @@ def runMetaData():
             msg = json.loads(strippedLine)
             packetTime = parseUTC(msg["PacketSendUTC"])
             delta = packetTime - curDt
+            # make sure time is positive number
             t = delta.total_seconds()
             if t < 0:
                 t *= -1
 
+            # send data
             channel.basic_publish(exchange='', routing_key='player-tracker', body=str(msg))
             print(" [x] Sent %r" % msg["PacketSendUTC"])
             print("Waiting for %r seconds." % delta.total_seconds())
@@ -43,6 +45,7 @@ def runMetaData():
     runMetaData()
 
 
+# Entity tracking file
 filepath = "../2019030415/EntityTracking.JSON"
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
