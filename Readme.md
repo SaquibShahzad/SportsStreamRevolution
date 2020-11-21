@@ -3,6 +3,8 @@ Analyzing data provided by Rogers, SportsNet and Intel to derive insights and ad
 Here's how it would look on SNNOW: 
 ![SNNOW](https://github.com/SaquibShahzad/SportsStreamRevolution/blob/main/images/web.png?raw=true)
 
+An example of the data our backend returns for breakaways: 
+![BreakwayData](https://github.com/SaquibShahzad/SportsStreamRevolution/blob/main/images/demoScreenshot.jpg?raw=true)
 
 #### To run our demo
 First, open up RabbitMQ on 3 different terminals
