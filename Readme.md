@@ -11,9 +11,9 @@ First, open up RabbitMQ on 3 different terminals
 Then, navigate to the downloaded repo
 Go into the PPT folder in the terminal
 run our receive_logs, emit_log, and emit_log2 python scripts using the commands:
-python receive_logs.py
-python emit_log.py
-python emit_log2.py
+* python receive_logs.py
+* python emit_log.py
+* python emit_log2.py
 
 You can see the coordinates of players and the puck being sent to the RabbitMQ database
 Please be patient when waiting for an output. There are not many times there is a potential breakaway in the game, so it may take a few minutes before you start to see an output in receive_logs.
